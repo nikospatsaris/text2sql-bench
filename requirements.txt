@@ -1,0 +1,6 @@
+# The harness itself needs nothing outside the Python 3.9+ standard library.
+# Only the Claude adapter has a dependency, and it is imported lazily:
+#
+#   pip install anthropic
+#
+# Kept so the absence is deliberate rather than an oversight.
