@@ -1,3 +1,5 @@
+[README.md](https://github.com/user-attachments/files/31922500/README.md)
+
 # text2sql-bench
 
 An execution-accuracy benchmark for text-to-SQL, over a real database built from
@@ -7,6 +9,20 @@ It does not measure whether a model writes the *same* SQL as a reference answer.
 It runs both queries and compares the results — which moves the hard part rather
 than removing it, because deciding whether two result sets mean the same thing
 is itself a pile of judgement calls. Those calls are the project.
+
+## Results
+
+|---|---|
+| **Strict** | 36/40 (90%), both runs |
+| **Prefix** | 39/40 (98%) and 40/40 (100%) |
+| **Speed and cost** | ~2.7s and well under a cent per question |
+| **Controls** | `gold` 40/40, `constant` 0/40 |
+| **Harness** | 40 cases, ~64k rows of World Bank data in SQLite, 69 offline tests |
+
+The gap between strict and prefix is the finding, not the headline number.
+Two identical runs also disagreed, which sets the noise floor for any comparison
+made with this benchmark. Both are worked through in
+[Measured results](#measured-results).
 
 No API key needed to run the harness. No dependencies outside the standard
 library unless you point it at Claude.
